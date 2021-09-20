@@ -69,7 +69,7 @@ def chooser_simulation(numTrials, student, figs):
     frac = 0
     numtarget = 0
     for t in range(numTrials+1):
-        if student in choose_presenters(classlist, figs)[0]:
+        if student in choose_presenters_notext(classlist, figs)[0]:
             numtarget += 1
     
     frac = numtarget/numTrials
@@ -77,5 +77,14 @@ def chooser_simulation(numTrials, student, figs):
     return frac
 
 
-
-
+def choose_presenters_notext(classlist, number_of_figures):
+    
+    fig_list = []   
+    
+    if number_of_figures <= len(classlist):
+        
+        fig_list.append(random.sample(classlist, number_of_figures))  #without replacement
+    else:
+        fig_list.append(random.choices(classlist, k = number_of_figures))  #with replacement
+    
+    return fig_list
