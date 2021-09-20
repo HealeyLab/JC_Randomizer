@@ -28,7 +28,11 @@ def choose_presenters(classlist, number_of_figures):
     
     fig_list = []   
     
-    fig_list.append(random.sample(classlist, number_of_figures))
+    if number_of_figures <= len(classlist):
+        
+        fig_list.append(random.sample(classlist, number_of_figures))  #without replacement
+    else:
+        fig_list.append(random.choices(classlist, k = number_of_figures))  #with replacement
     
     input("Press Enter to begin....")
     print(" ... ... ... [drumroll......]  ... ... ...")
@@ -48,6 +52,7 @@ def choose_presenters(classlist, number_of_figures):
     print("Your lucky winners for today's 892 Journal Club were: ")
     
     return fig_list
+
 
 
 
